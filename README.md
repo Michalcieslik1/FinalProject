@@ -42,3 +42,8 @@ void Update()
     }
 }
 ```
+The coroutine that's started when an attack is supposed to be performed is the timed animation and handling of the attack itself. It is executed along other code that runs simultaneously, so that the world keeps moving when the player attacks. Similarly, the knockback effect a player experienced when hit by the enemy is also handled though a coroutine.
+
+##### Camera Movement and Animations
+The script that controls the camera movement moves the position of the camera object if the player moves. The edges of said movement are controlled by preset variables that are later altered through box colliders that correspond to area transitions, in which case the max and min points of the camera are modified.
+The animations are handled through in-unity functionality called Animation, which lets you craft the animations to be displayed, and the Animator, which acts as a controller of which specific animations should be displayed. This is controlled through blend trees that display different sprites based on the values of the change variable in the player object.
