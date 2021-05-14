@@ -11,7 +11,7 @@ Since I didn't have neither the resources nor the skill to complete a remake of 
 To implement my player, I needed to create a game object with a specific PlayerMovement, and CamperaMovement script, in order to let user input control the movement of my player, and in order to make the camera follow said player. I also needed the player sprite to change depending on the state of the player, as well as the action that the player is taking. On top of changing the sprite, the player object should also create box colliders that will serve as collision detectors with our environment, box colliders for hitboxes of displayed attacks, and a box collider for players own hitboxes. 
 #### PlayerMovement
 My PlayerMovement script handles the state of the player, player movement, and player animation flags. The possible states are saved in the enum outside of the class:
-``C#
+```C#
 public enum PlayerState
 {
     walk,
@@ -19,9 +19,9 @@ public enum PlayerState
     interact,
     stagger
 }
-``
+```
 The `Update()` function, which gets called around 30 times a second, is the place where all of the player movement, state shifts, and animations occur:
-``C#
+```C#
 void Update()
 {
     //Reset Player Change
@@ -41,4 +41,4 @@ void Update()
         UpdateAnimation();
     }
 }
-``
+```
