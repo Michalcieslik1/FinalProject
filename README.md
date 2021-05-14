@@ -46,4 +46,10 @@ The coroutine that's started when an attack is supposed to be performed is the t
 
 ##### Camera Movement and Animations
 The script that controls the camera movement moves the position of the camera object if the player moves. The edges of said movement are controlled by preset variables that are later altered through box colliders that correspond to area transitions, in which case the max and min points of the camera are modified.
+
 The animations are handled through in-unity functionality called Animation, which lets you craft the animations to be displayed, and the Animator, which acts as a controller of which specific animations should be displayed. This is controlled through blend trees that display different sprites based on the values of the change variable in the player object.
+
+### Environments
+Each environment is split into two separate layers: the Ground and the Collisions, a pair of Tilesets, or canvases onto which one can paint with preset assets called Tiles. The Ground is a Tileset that does not collide with the player, while the Collisions Tileset does. Both Tilesets get covered by the Player sprite.
+
+The Objects GameObject houses all of the items that need to have the 3D effect, as well as any of the premade game items like signs and enemies. The 3D effect is created through a script that switches whether the sprite covers the player, so that when the player is in front of the object, the player covers the bush, while if the player is behind the object, the object covers the player. 
