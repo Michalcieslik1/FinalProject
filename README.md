@@ -6,7 +6,7 @@ Legend of Zelda was released in 1986 for the NES. It was a critical title for Ni
 ![image](https://user-images.githubusercontent.com/60623457/118228099-a3e85980-b457-11eb-9cec-fb1108662af6.png)
 
 ## My Version
-Since I didn't have neither the resources nor the skill to complete a remake of the entirety of the original game, I have decided to focus on implementing the absolute basics of a 2D Zelda game. I used the Unity engine to create the game. 
+Since I didn't have neither the resources nor the skill to complete a remake of the entirety of the original game, I have decided to focus on implementing the absolute basics of a 2D Zelda game. I used the Unity engine to create the game, and because of this project I managed to get a grasp on said platform. 
 ### Player
 To implement my player, I needed to create a game object with a specific PlayerMovement, and CamperaMovement script, in order to let user input control the movement of my player, and in order to make the camera follow said player. I also needed the player sprite to change depending on the state of the player, as well as the action that the player is taking. On top of changing the sprite, the player object should also create box colliders that will serve as collision detectors with our environment, box colliders for hitboxes of displayed attacks, and a box collider for players own hitboxes. 
 #### PlayerMovement
@@ -48,6 +48,9 @@ The coroutine that's started when an attack is supposed to be performed is the t
 The script that controls the camera movement moves the position of the camera object if the player moves. The edges of said movement are controlled by preset variables that are later altered through box colliders that correspond to area transitions, in which case the max and min points of the camera are modified.
 
 The animations are handled through in-unity functionality called Animation, which lets you craft the animations to be displayed, and the Animator, which acts as a controller of which specific animations should be displayed. This is controlled through blend trees that display different sprites based on the values of the change variable in the player object.
+
+##### Player and Enemy Health
+Player Health is managed through a type of Observer pattern, which separates the call of a function from its execution. The function sends an alert to the Observer that a certain action happened, and then the Observer executes any of the code that has "subscribed" to said event happening. The values of both Player and Enemy health are stored in special C# scripts that inheret from ScriptableObject, which save the state of said script between executions, which means both Player and Enemy health data can be stored between multiple scenes and certain data can be even saved between executions of said program.
 
 ### Environments
 Each environment is split into two separate layers: the Ground and the Collisions, a pair of Tilesets, or canvases onto which one can paint with preset assets called Tiles. The Ground is a Tileset that does not collide with the player, while the Collisions Tileset does. Both Tilesets get covered by the Player sprite.
