@@ -58,10 +58,13 @@ The script that controls the camera movement moves the position of the camera ob
 
 The animations are handled through in-unity functionality called Animation, which lets you craft the animations to be displayed, and the Animator, which acts as a controller of which specific animations should be displayed. This is controlled through blend trees that display different sprites based on the values of the change variable in the player object.
 
-##### Player and Enemy Health
+### Player and Enemy Health
 Player Health is managed through a type of Observer pattern, which separates the call of a function from its execution. The function sends an alert to the Observer that a certain action happened, and then the Observer executes any of the code that has "subscribed" to said event happening. The values of both Player and Enemy health are stored in special C# scripts that inheret from ScriptableObject, which save the state of said script between executions, which means both Player and Enemy health data can be stored between multiple scenes and certain data can be even saved between executions of said program.
+The actual value of the player's health gets stored in scriptable objects, or separate objects that don't appear in the scene and can easily store useful information that gets retained through different scenes, or even through different instances of the program running.
 
 ### Environments
-Each environment is split into two separate layers: the Ground and the Collisions, a pair of Tilesets, or canvases onto which one can paint with preset assets called Tiles. The Ground is a Tileset that does not collide with the player, while the Collisions Tileset does. Both Tilesets get covered by the Player sprite.
+Each level environment is split into two separate layers: the Ground and the Collisions, a pair of Tilesets, or canvases onto which one can paint with preset assets called Tiles. The Ground is a Tileset that does not collide with the player, while the Collisions Tileset does. Both Tilesets get covered by the Player sprite.
+
+<img width="257" alt="Zrzut ekranu 2021-05-18 o 8 25 03 AM" src="https://user-images.githubusercontent.com/60623457/118650586-a24dc700-b7b2-11eb-99f2-14ac4a3dcc57.png">
 
 The Objects GameObject houses all of the items that need to have the 3D effect, as well as any of the premade game items like signs and enemies. The 3D effect is created through a script that switches whether the sprite covers the player, so that when the player is in front of the object, the player covers the bush, while if the player is behind the object, the object covers the player. 
