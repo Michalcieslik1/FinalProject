@@ -12,7 +12,13 @@ To implement my player, I needed to create a game object with a specific PlayerM
 
 <img width="268" alt="Zrzut ekranu 2021-05-18 o 8 13 06 AM" src="https://user-images.githubusercontent.com/60623457/118648931-e8a22680-b7b0-11eb-97f0-81093b0ead54.png">
 
-#### PlayerMovement
+The player object, on top of the required transform and sprite renderer attributes, also has the Rigidbody 2D and Box Collider 2D components. These create a collidable area that can either act as a physical body or a trigger. In this case, the Box Collider acts as the feet of the player, colliding with any object it encounters. An example of the trigger functionality of a Box Collider can be seen in the objects that are the children of the Player object:
+
+<img width="262" alt="Zrzut ekranu 2021-05-18 o 8 12 22 AM" src="https://user-images.githubusercontent.com/60623457/118649334-636b4180-b7b1-11eb-87bb-094a7f256794.png">
+
+Here, the 4 Box Colliders act as triggers for player attacks. The colliders are currently grayed out because they are inactive, but they become active when the player attacks.
+
+### PlayerMovement
 My PlayerMovement script handles the state of the player, player movement, and player animation flags. The possible states are saved in the enum outside of the class:
 ```C#
 public enum PlayerState
